@@ -1,10 +1,15 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './SignIn.css'
 
 
 function SignIn() {
-
+const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/surveyItems')
+  }
     return (
         <div className="abc">
             <div className='main-continer'>
@@ -12,7 +17,9 @@ function SignIn() {
                 <p className='text1'>Welcome Page<br /> One line text <br /> Will be here </p>
                 <p className='text2'>Sign in to continue access pages</p>
                 <p className='text3'>Don’t Have An Account?</p>
-                <button className='register'>Register  </button>
+                
+                <Link to="/register">
+                <button className='register'>Register  </button></Link>
             </div>
             <div className='signin'>
                 <form>
@@ -27,7 +34,7 @@ function SignIn() {
                         <input type='password' name='Password' required></input>
                     </div>
                     <div className='btn'>
-                        <button>Sign in</button>
+                        <button onClick={handleSubmit}>Sign in</button>
                     </div>
                 </form>
             </div>

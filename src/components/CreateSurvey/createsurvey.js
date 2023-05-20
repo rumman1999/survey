@@ -1,8 +1,10 @@
 import React, { useState, } from 'react';
 import './createsurvey.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const SurveyForm = () => {
+  const navigate = useNavigate();
   
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -14,6 +16,7 @@ const SurveyForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate('/createQues')
   
 
     // Do something with the survey data (e.g., send it to a server)
@@ -52,6 +55,7 @@ const SurveyForm = () => {
         <button type="button" className="cancel-button">
           Cancel
         </button>
+        
         <button type="submit" className="next-button" onClick={handleSubmit}>
           Next
         </button>

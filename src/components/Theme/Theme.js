@@ -12,7 +12,7 @@ function Theme(){
   
     return(
         <>
-            <span onClick={handleClickOpen}>Theme Setting</span>
+            <button onClick={handleClickOpen}>Theme Setting</button>
             <div>
                 {
                     popup?
