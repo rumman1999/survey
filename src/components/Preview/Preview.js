@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import "./Preview.css";
 import PrevQues from "./PrevQues";
+import Sidebar from "../SurveyList/Sidebar";
 
 function Preview() {
 
@@ -28,6 +29,8 @@ options:["true" , "false" ]
 }
   ];
   return (
+    <>
+    <Sidebar/>
     <div className="container">
       <div className="top-part">
         <span className="left-part">&#8592; Preview </span>
@@ -47,6 +50,7 @@ options:["true" , "false" ]
         ))
       }
     </div>
+    </>
   );
 }
 export default Preview;

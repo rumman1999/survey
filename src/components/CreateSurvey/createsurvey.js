@@ -1,6 +1,7 @@
 import React, { useState, } from 'react';
 import './createsurvey.css';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from '../SurveyList/Sidebar';
 
 
 const SurveyForm = () => {
@@ -43,12 +44,9 @@ const SurveyForm = () => {
     setImage(file);
   };
 
-  return (
+  return (<>
+    <Sidebar/>
     <div id="survey">
-         <div className="logo-container">
-        <span className="logo-text">Logo</span>
-        <img className="logo-image" src="logo.png" alt="Logo" />
-      </div>
     <div className="heading-container">
       <h2>Create Survey</h2>
       <div className="button-container">
@@ -153,6 +151,8 @@ const SurveyForm = () => {
         </div>
       </form>
     </div>
+  </>
+    
   );
 };
 

@@ -7,6 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left: 300px;
+    margin-right: 100px;
   }
   .question-number {
     margin-right: 8px; /* Adjust the margin value as per your preference */
@@ -21,6 +23,8 @@
     border: 1px solid #ccc;
     background-color: lightblue;
     padding: 10px;
+    margin-left: 300px;
+    margin-right: 100px;
   }
 
   .question-wrapper {
@@ -88,5 +92,8 @@
     border: 2px solid grey;
     /* Add any other desired styles */
     margin: 0 auto; /* Center the button horizontally */
+}
+.addbutton{
+  margin: 0 300px;
 }
 

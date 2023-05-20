@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 //import { IconName } from '@material-ui/icons';
 import "./SurveyItems.css";
+import Sidebar from "./Sidebar";
 
 const SurveyItems = () => {
   const navigate = useNavigate();
@@ -109,7 +110,7 @@ const SurveyItems = () => {
             });
         }
         
-    navigate('/createQues')
+    navigate('/surveyForm')
     };
 
     const handleCancelEdit = () => {
@@ -119,11 +120,9 @@ const SurveyItems = () => {
 
     return (
         <>
+        <Sidebar/>
             <div className="main-list">
-                <div className="logo">
-                    <span className="logo-txt">LOGO</span>
-                    <img src="" alt=""></img>
-                </div>
+                
                 <div className="Survey">
                     
                     <div className="list-page">
