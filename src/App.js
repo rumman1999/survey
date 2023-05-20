@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Register from './components/SignIn/Register';
 import SignIn from './components/SignIn/SignIn'
-import Register from './components/SignIn/Register'
-import SurveyItems from './components/SurveyList/SurveyItems';
-import './App.css';
+import SurveyItems from './components/SurveyList/SurveyItems'
+import SurveyForm from './components/CreateSurvey/createsurvey'
 
 function App() {
   return (
-    <div className="App">
-      <SurveyItems />
-    </div>
+    <>
+      <SurveyForm />
+    </>
   );
 }
 
