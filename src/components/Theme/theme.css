@@ -5,9 +5,10 @@
     width: 100%;
     position:absolute;
     top: 0;
+    left: 0;
   }
   .popup{
-    height: 70%;
+    height: 80%;
     width: 60%;
     background-color: white;
     position: absolute;

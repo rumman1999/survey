@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import './nextpage.css';
+import './createquestion.css';
+import { useNavigate } from 'react-router-dom';
+import Sidebar from '../SurveyList/Sidebar';
+import Theme from '../Theme/Theme'
 
-const NextPage = () => {
+const CreateQuestion = () => {
+  
+const navigate = useNavigate();
+  const preview = (e) => {
+    e.preventDefault();
+    navigate('/preview')
+  }
   const [selectedOption, setSelectedOption] = useState('');
   const [questionText, setQuestionText] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -28,8 +37,9 @@ const NextPage = () => {
     setSelectedOption('');
   };
 
-    return (
-      <div className="next-page-container">
+    return (<>
+    <Sidebar/>
+    <div className="next-page-container">
       <div className="header-container">
         <div className="back-arrow">
           
@@ -40,8 +50,10 @@ const NextPage = () => {
         </div>
         <h2>Create Questions</h2>
         <div className="buttons-container">
-          <button className="preview-button">Preview</button>
+          <button className="preview-button" onClick={preview}>Preview</button>
           <button className="save-button">Save</button>
+          
+          <Theme/>
         </div>
       </div>
       <hr />
@@ -112,7 +124,8 @@ const NextPage = () => {
         <button className="addbutton" onClick={handleAddQuestion}>Add Question</button>
         </div>
       </div>
+    </>
     );
   };
   
-  export default NextPage;
+  export default CreateQuestion;

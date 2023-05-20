@@ -8,7 +8,7 @@ function SignIn() {
 const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/surveyItems')
+    navigate('/surveyitems')
   }
     return (
         <div className="abc">
