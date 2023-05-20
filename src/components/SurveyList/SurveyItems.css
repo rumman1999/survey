@@ -1,0 +1,62 @@
+.main-list{
+    background-color: white;
+}
+.logo{
+    background-color: white;
+    color: black;
+    height: 40px;
+    box-shadow : 0px 0px 10px #00000029  ;
+}
+.logo .logo-txt{
+    font-weight: bold;
+    padding: 20px;
+    font-size: 20px;
+    
+}
+.Survey{
+    display: flex;
+    
+
+}
+.sidebar{
+    /* margin-top: 50px; */
+    width: 40px;
+    height: 100vh;
+    background-color: #278DF1;
+    align-items: center;
+    font-size: 25px;
+    color: white;
+
+
+}
+.sidebar ul {
+    list-style: none;
+    margin-top: 50px;
+    padding: 250px 10px 60px 5px;
+}
+.list-page{
+background: #FAFDFF;
+margin: 50px 20px 0px 150px;
+width: 600vh;
+height: 400vh;
+}
+table thead tr th{
+    padding:20px;
+    background-color: #F8FAFF;
+    box-shadow:  12px #00000029;
+    column-span: none;
+    
+}
+
+.table-data {
+    padding: 20px 60px 20px 60px;
+}
+.list-page .search {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+}
+.list-page .search input{
+    margin-top: 50px;
+    
+}
