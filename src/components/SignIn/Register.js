@@ -14,7 +14,6 @@ function Register() {
     const validateForm = () => {
         const errors = {};
 
-        // Email validation
         if (!email) {
             errors.email = 'Email is required';
         } else if (!/\S+@\S+\.\S+/.test(email)) {

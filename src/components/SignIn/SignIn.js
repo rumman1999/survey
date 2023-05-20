@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './SignIn.css'
 
 
-function Register() {
-    const navigate = useNavigate();
+function SignIn() {
+const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate('/surveyItems')
@@ -43,4 +43,4 @@ function Register() {
     )
 }
 
-export default Register
+export default SignIn
