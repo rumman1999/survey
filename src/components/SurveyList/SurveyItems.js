@@ -121,19 +121,7 @@ const SurveyItems = () => {
                     <img src="" alt=""></img>
                 </div>
                 <div className="Survey">
-                    <div className="sidebar">
-                        <ul>
-                            <li>
-                                <FontAwesomeIcon icon={faHouse} />
-                            </li>
-                            <li>
-                                <FontAwesomeIcon icon={faEnvelope} />
-                            </li>
-                            <li>
-                                <FontAwesomeIcon icon={faHamburger} />
-                            </li>
-                        </ul>{" "}
-                    </div>
+                    
                     <div className="list-page">
                         <div className="search">
                             <div >

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './SignIn.css'
 
 
-function Register() {
+function SignIn() {
 
     return (
         <div className="abc">
@@ -36,4 +36,4 @@ function Register() {
     )
 }
 
-export default Register
+export default SignIn
