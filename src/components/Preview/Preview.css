@@ -23,6 +23,11 @@
     color: #FFFFFF;
     padding: 10px 20px;
   }
+  .close{
+    border: 1.5px solid #278DF1;
+    background-color: #FFFFFF;
+    color :#278DF1
+  }
 
   .container{
     margin: 20px 0 0 20px;

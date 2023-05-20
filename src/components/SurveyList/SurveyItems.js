@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 //import Sidebar from './Sidebar';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +15,7 @@ import {
 import "./SurveyItems.css";
 
 const SurveyItems = () => {
+  const navigate = useNavigate();
     const [surveys, setSurveys] = useState([
         {
             id: 1,
@@ -106,6 +108,8 @@ const SurveyItems = () => {
                 endDate: "",
             });
         }
+        
+    navigate('/createQues')
     };
 
     const handleCancelEdit = () => {

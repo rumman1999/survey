@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import "./Register.css";
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
 function Register() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
@@ -38,10 +40,13 @@ function Register() {
         } else {
             console.log('Invalid form');
         }
+        
+    navigate('/')
     };
 
     return (
-        <div className="main-continer">
+        <div className="abc">
+            <div className="main-continer">
             <div className="heading1">
                 <p className="text1">
                     Welcome Page
@@ -49,7 +54,9 @@ function Register() {
                 </p>
                 <p className="text2">Sign in to continue access pages</p>
                 <p className="text3">Don’t Have An Account?</p>
-                <button className="register">Sign In </button>
+                
+                <Link to="/">
+                <button className="register">Sign In </button></Link>
             </div>
             <div className="Register">
                 <form onSubmit={handleSubmit}>
@@ -91,11 +98,15 @@ function Register() {
                             </label>
                         </div>
                     </div>
+                    
+                    <Link to="/surveyItems">
                     <div className="btn1">
                         <button>Register</button>
-                    </div>
+                        
+                    </div></Link>
                 </form>
             </div>
+        </div>
         </div>
     );
 }

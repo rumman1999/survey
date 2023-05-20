@@ -15,7 +15,7 @@
 }
 .Survey{
     display: flex;
-    
+    height: max-content;
 
 }
 .sidebar{
@@ -38,7 +38,7 @@
 background: #FAFDFF;
 margin: 50px 20px 0px 150px;
 width: 600vh;
-height: 400vh;
+height: 80vh;
 }
 table thead tr th{
     padding:20px;
