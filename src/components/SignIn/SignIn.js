@@ -1,5 +1,4 @@
 import React from 'react'
-//
 import { useNavigate } from 'react-router-dom';
 import './SignIn.css'
 
@@ -7,7 +6,8 @@ import './SignIn.css'
 function Register() {
 
     return (
-        <div className='main-continer'>
+        <div className="abc">
+            <div className='main-continer'>
             <div className='heading1'>
                 <p className='text1'>Welcome Page<br /> One line text <br /> Will be here </p>
                 <p className='text2'>Sign in to continue access pages</p>
@@ -31,6 +31,7 @@ function Register() {
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     )
 }
