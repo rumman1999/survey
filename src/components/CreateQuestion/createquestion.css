@@ -1,0 +1,92 @@
+.next-page-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .question-number {
+    margin-right: 8px; /* Adjust the margin value as per your preference */
+  }
+  
+  .question-text {
+    margin-top: 20px; /* Adjust the margin value as per your preference */
+  }  
+ 
+
+  .question-container {
+    border: 1px solid #ccc;
+    background-color: lightblue;
+    padding: 10px;
+  }
+
+  .question-wrapper {
+    margin-bottom: 10px;
+  }
+
+  .question-number {
+    font-weight: bold;
+  }
+
+  .question-text {
+    margin-top: 0;
+  }
+
+  textarea {
+    width: 20%;
+    padding: 5px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .centered-container {
+    justify-content: center;
+    align-items: center;
+    height:20px;
+  }
+  h2{
+    text-align: left;
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .preview-button,
+  .save-button {
+    padding: 10px 20px;
+    font-size: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-button {
+    background-color: white;
+    color: blue;
+    margin-right: 10px;
+    border: none;
+  }
+  
+  .preview-button {
+    background-color: blue;
+    color: white;
+    border: none;
+  }
+  
+  .preview-button:hover,
+  .save-button:hover {
+    border: 2px solid blue;
+  }
+  .addbutton:hover {
+    border: 2px solid grey;
+    /* Add any other desired styles */
+    margin: 0 auto; /* Center the button horizontally */
+}
+
