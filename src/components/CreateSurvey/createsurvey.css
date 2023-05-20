@@ -1,0 +1,93 @@
+#survey {
+    background-color: #f5f8fa;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+   
+  }
+  
+  h2 {
+    text-align: left;
+    margin-top: 20px;
+  }
+  
+  hr {
+    margin-top: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+  }
+  
+  .left-side {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .right-side {
+    flex: 1;
+    padding-left: 20px;
+  }
+  
+  .form-field {
+    margin-bottom: 20px;
+  }
+  
+  .form-field label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .cancel-button,
+  .next-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cancel-button {
+    background-color: white;
+    color: blue;
+    margin-right: 10px;
+    border: none;
+  }
+  
+  .next-button {
+    background-color: blue;
+    color: white;
+    border: none;
+  }
+  
+  .cancel-button:hover,
+  .next-button:hover {
+    border: 2px solid blue;
+  }
+
+
+  
