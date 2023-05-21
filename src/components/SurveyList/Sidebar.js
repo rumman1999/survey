@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import './Sidebar.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,6 +9,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Sidebar() {
+    const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/')
+  }
     return (
 
         <>
@@ -16,11 +22,12 @@ function Sidebar() {
         <img src="" alt=""></img>
         <div className="sidebar">
             <ul>
-                <li>
+                <li className='home' onClick={handleSubmit}>
                     <FontAwesomeIcon icon={faHouse} />
                 </li>
-                <li>
-                    <FontAwesomeIcon icon={faEnvelope} />
+                <li >
+                <FontAwesomeIcon icon={faEnvelope} />
+                    
                 </li>
                 <li>
                     <FontAwesomeIcon icon={faHamburger} />
