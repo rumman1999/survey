@@ -4,128 +4,143 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './createquestion.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../SurveyList/Sidebar';
-import Theme from '../Theme/Theme'
+import Theme from '../Theme/Theme';
 
 const CreateQuestion = () => {
-  
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const preview = (e) => {
     e.preventDefault();
-    navigate('/preview')
-  }
-  const [selectedOption, setSelectedOption] = useState('');
+    navigate('/preview');
+  };
+
   const [questionText, setQuestionText] = useState('');
   const [questions, setQuestions] = useState([]);
 
-  const handleOptionChange = (option) => {
-    setSelectedOption(option);
-  };
   const handleQuestionTextChange = (e) => {
     setQuestionText(e.target.value);
   };
+
   const handleAddQuestion = () => {
-    // Create a new question object
     const newQuestion = {
-      id: questions.length + 1, // Assign a unique ID to the question
+      id: questions.length + 1,
       questionText,
-      selectedOption,
+      options: ['Option 1', 'Option 2', 'Option 3'],
+      selectedOption: '',
     };
     setQuestions([...questions, newQuestion]);
-
-    // Clear the input fields after adding the question
     setQuestionText('');
-    setSelectedOption('');
   };
 
-    return (<>
-    <Sidebar/>
-    <div className="next-page-container">
-      <div className="header-container">
-        <div className="back-arrow">
-          
-          {/* Add back arrow icon or text here */}
+  const handleOptionChange = (questionId, option) => {
+    const updatedQuestions = questions.map((question) => {
+      if (question.id === questionId) {
+        return { ...question, selectedOption: option };
+      }
+      return question;
+    });
+    setQuestions(updatedQuestions);
+  };
+
+  const handleSave = () => {
+    navigate('/surveyItems');
+  };
+
+  return (
+    <>
+      <Sidebar />
+      <div className="next-page-container">
+        <div className="header-container">
+          <div className="back-arrow">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </div>
+          <h2>Create Questions</h2>
+          <div className="buttons-container">
+            <button className="preview-button" onClick={preview}>
+              Preview
+            </button>
+            <button className="save-button" onClick={handleSave}>
+              Save
+            </button>
+            <Theme />
+          </div>
         </div>
-        <div className="back-arrow">
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </div>
-        <h2>Create Questions</h2>
-        <div className="buttons-container">
-          <button className="preview-button" onClick={preview}>Preview</button>
-          <button className="save-button">Save</button>
-          
-          <Theme/>
-        </div>
-      </div>
-      <hr />
-  
-        {/* Buttons */}
-        <div>
+        <hr />
+
+        {/* Render existing questions */}
+        {questions.map((question, index) => (
+          <div key={question.id} className="question-container">
+            <div className="question-wrapper">
+              <span className="question-number">{`Q${index + 1}`}</span>
+              <span className="question-text">{`Question ${index + 1}:`}</span>
+              <div>
+                <textarea
+                  value={question.questionText}
+                  onChange={(e) =>
+                    handleQuestionTextChange(e, question.id)
+                  }
+                  placeholder="Enter your question here"
+                ></textarea>
+              </div>
+            </div>
+
+            {question.options.map((option) => (
+              <div key={option}>
+                <label>
+                  <input
+                    type="radio"
+                    name={`question${question.id}`}
+                    value={option}
+                    checked={question.selectedOption === option}
+                    onChange={() => handleOptionChange(question.id, option)}
+                  />
+                  {option}
+                </label>
+              </div>
+            ))}
+          </div>
+        ))}
+
+        {/* Render new question input */}
         <div className="question-container">
           <div className="question-wrapper">
-            <span className="question-number">Q1</span>
-            <span className="question-text">Question 1:</span>
+            <span className="question-number">{`Q${questions.length + 1}`}</span>
+            <span className="question-text">{`Question ${questions.length + 1}:`}</span>
             <div>
-            <textarea
-            value={questionText}
-            onChange={handleQuestionTextChange}
-            placeholder="Enter your question here"
-          ></textarea>
+              <textarea
+                value={questionText}
+                onChange={handleQuestionTextChange}
+                placeholder="Enter your question here"
+              ></textarea>
             </div>
-        
           </div>
-          <div>
-          <label>
-            <input
-              type="radio"
-              name="question1"
-              value="Option 1"
-              checked={selectedOption === 'Option 1'}
-              onChange={() => handleOptionChange('Option 1')}
-            />
-            Option 1
-          </label>
-          </div>
-         
-          <div>
-          <label>
-            <input
-              type="radio"
-              name="question1"
-              value="Option 2"
-              checked={selectedOption === 'Option 2'}
-              onChange={() => handleOptionChange('Option 2')}
-            />
-            Option 2
-          </label>
-          </div>
-         
-          <label>
-            <input
-              type="radio"
-              name="question1"
-              value="Option 3"
-              checked={selectedOption === 'Option 3'}
-              onChange={() => handleOptionChange('Option 3')}
-            />
-            Option 3
-          </label>
+          {/* Add options for new question */}
+          {['Option 1', 'Option 2', 'Option 3'].map((option) => (
+            <div key={option}>
+              <label>
+                <input
+                  type="radio"
+                  name={`question${questions.length + 1}`}
+                  value={option}
+                  checked={false}
+                  onChange={() => handleOptionChange(questions.length + 1, option)}
+                />
+                {option}
+              </label>
+            </div>
+          ))}
         </div>
 
-        <div>
-    
-          {/* Add radio buttons for question 2 options */}
-        </div>
-      </div>
-  
-  
         {/* Add question button */}
-        <div class="centered-container"></div>
-        <div>
-        <button className="addbutton" onClick={handleAddQuestion}>Add Question</button>
+        <div className="centered-container">
+          <div>
+            <button className="addbutton" onClick={handleAddQuestion}>
+              Add Question
+            </button>
+          </div>
         </div>
       </div>
     </>
-    );
-  };
-  
-  export default CreateQuestion;
+  );
+};
+
+export default CreateQuestion;
