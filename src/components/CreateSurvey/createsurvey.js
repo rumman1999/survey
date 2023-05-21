@@ -1,4 +1,6 @@
-import React, { useState, } from 'react';
+
+
+      import React, { useState, } from 'react';
 import './createsurvey.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../SurveyList/Sidebar';
@@ -59,7 +61,6 @@ const SurveyForm = () => {
       formData.append('endDate', endDate);
       formData.append('criteria', criteria);
       formData.append('image', image);
-  
       fetch(`${REACT_APP_API_ENDPOINT}/survey`, {
         method: 'POST',
         body: formData,
@@ -67,7 +68,7 @@ const SurveyForm = () => {
         .then((response) => {
           if (response.status === 200) {
             console.log('Survey created successfully');
-            navigate('/surveyitems');
+            navigate('/createQues');
           } else {
             throw new Error(response);
           }
