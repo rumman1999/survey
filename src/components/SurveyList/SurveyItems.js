@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-//import Sidebar from './Sidebar';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEnvelope,
@@ -11,11 +10,12 @@ import {
     faEdit,
     faDeleteLeft,
 } from "@fortawesome/free-solid-svg-icons";
-//import { IconName } from '@material-ui/icons';
 import "./SurveyItems.css";
 import Sidebar from "./Sidebar";
+const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
 const SurveyItems = () => {
+    const email = localStorage.getItem('email')
   const navigate = useNavigate();
     const [surveys, setSurveys] = useState([
         {
@@ -27,7 +27,7 @@ const SurveyItems = () => {
             endDate: "2023-01-10",
         },
         {
-            id: 2,
+            id: 3,
             name: "Survey 2",
             type: "Video",
             description: "Description 2",
@@ -35,7 +35,7 @@ const SurveyItems = () => {
             endDate: "2023-02-10",
         },
         {
-            id: 2,
+            id: 4,
             name: "Survey 2",
             type: "Type 2",
             description: "Description 2",
@@ -43,7 +43,7 @@ const SurveyItems = () => {
             endDate: "2023-02-10",
         },
         {
-            id: 2,
+            id: 5,
             name: "Survey 2",
             type: "Video",
             description: "Description 2",
@@ -51,7 +51,7 @@ const SurveyItems = () => {
             endDate: "2023-02-10",
         },
         {
-            id: 2,
+            id: 6,
             name: "Survey 2",
             type: "Image",
             description: "Description 2",
@@ -59,7 +59,7 @@ const SurveyItems = () => {
             endDate: "2023-02-10",
         },
         {
-            id: 2,
+            id: 7,
             name: "Survey 2",
             type: "Image",
             description: "Description 2",
@@ -68,7 +68,10 @@ const SurveyItems = () => {
         },
         // Add more survey objects as needed
     ]);
-
+    // const [surveys, setSurveys] = useState([])
+    // useEffect(()=>{
+    //     const respond = fetchData(`${REACT_APP_API_ENDPOINT}/surveys` , email)
+    // } , [])
     const [isEditing, setIsEditing] = useState(false);
     const [editedSurvey, setEditedSurvey] = useState({});
     const [newSurvey, setNewSurvey] = useState({
@@ -79,6 +82,26 @@ const SurveyItems = () => {
         startDate: "",
         endDate: "",
     });
+    function fetchData(url, email) {
+        const apiUrl = new URL(url);
+        apiUrl.searchParams.append('email', email);
+      
+        console.log(apiUrl);
+        return fetch(apiUrl)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not OK');
+            }
+            return response.json();
+          })
+          .then(data => {
+            return data;
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+      
 
     const handleEditSurvey = (surveyId) => {
         const surveyToEdit = surveys.find((survey) => survey.id === surveyId);
