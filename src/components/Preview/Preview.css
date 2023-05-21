@@ -79,3 +79,17 @@
 .my-select option {
   padding: 2px;
 }
+.dark-theme {
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+}
+
+.dark-theme .border {
+  background-color: #fff;
+}
+
+.dark-theme .my-option {
+  color: #fff;
+}
+
