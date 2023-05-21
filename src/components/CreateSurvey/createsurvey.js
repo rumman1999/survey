@@ -2,6 +2,7 @@ import React, { useState, } from 'react';
 import './createsurvey.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../SurveyList/Sidebar';
+const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
 
 const SurveyForm = () => {
@@ -14,30 +15,74 @@ const SurveyForm = () => {
   const [endDate, setEndDate] = useState('');
   const [criteria, setCriteria] = useState('');
   const [image, setImage] = useState(null);
-
+  const [errors, setErrors] = useState({});
+  const email = localStorage.getItem('email')
+  // console.log(email);
+  
+  const validateForm = () => {
+    const errors = {};
+    if (name.trim() === '') {
+      errors.name = 'Name is required';
+    }
+    if (description.trim() === '') {
+      errors.description = 'Description is required';
+    }
+    if (surveyType.trim() === '') {
+      errors.surveyType = 'Survey type is required';
+    }
+    if (startDate.trim() === '') {
+      errors.startDate = 'Start date is required';
+    }
+    if (endDate.trim() === '') {
+      errors.endDate = 'End date is required';
+    }
+    if (criteria.trim() === '') {
+      errors.criteria = 'Criteria is required';
+    }
+    if (!image) {
+      errors.image = 'Image is required';
+    }
+    return errors;
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/createQues')
   
-
-    // Do something with the survey data (e.g., send it to a server)
-    console.log('Name:', name);
-    console.log('Description:', description);
-    console.log('Survey Type:', surveyType);
-    console.log('Start Date:', startDate);
-    console.log('End Date:', endDate);
-    console.log('Criteria:', criteria);
-    console.log('Image:', image);
-
-    // Reset the form
-    setName('');
-    setDescription('');
-    setSurveyType('');
-    setStartDate('');
-    setEndDate('');
-    setCriteria('');
-    setImage(null);
+    const errors = validateForm();
+    if (Object.keys(errors).length === 0) {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('description', description);
+      formData.append('surveyType', surveyType);
+      formData.append('startDate', startDate);
+      formData.append('endDate', endDate);
+      formData.append('criteria', criteria);
+      formData.append('image', image);
+  
+      fetch(`${REACT_APP_API_ENDPOINT}/survey`, {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            console.log('Survey created successfully');
+            navigate('/surveyitems');
+          } else {
+            throw new Error(response);
+          }
+        })
+        .catch((error) => {
+          console.log('Survey creation failed:', error);
+        });
+    } else {
+      console.log('Invalid form');
+    }
   };
+  
+  const handleCancle = (e) =>{
+    navigate('/surveyitems')
+  }
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -50,7 +95,7 @@ const SurveyForm = () => {
     <div className="heading-container">
       <h2>Create Survey</h2>
       <div className="button-container">
-        <button type="button" className="cancel-button">
+        <button type="button" className="cancel-button" onClick={handleCancle}>
           Cancel
         </button>
         
