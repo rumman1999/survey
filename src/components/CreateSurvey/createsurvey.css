@@ -66,7 +66,7 @@
   
   .cancel-button,
   .next-button {
-    padding: 10px 20px;
+    padding: 6px 20px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
@@ -77,17 +77,19 @@
     color: blue;
     margin-right: 10px;
     border: none;
+    border: 2px solid white
   }
   
   .next-button {
     background-color: blue;
     color: white;
     border: none;
+    border: 2px solid white
   }
   
   .cancel-button:hover,
   .next-button:hover {
-    border: 2px solid blue;
+    border-color: blue;
   }
 
 

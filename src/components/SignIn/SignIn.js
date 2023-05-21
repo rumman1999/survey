@@ -61,6 +61,7 @@ function SignIn() {
               console.log('Login successful');
               console.log(token);
               localStorage.setItem('token' , token)
+              localStorage.setItem('email' , email)
               setFail('');
               navigate('/surveyItems');
             })
