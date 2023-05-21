@@ -31,7 +31,6 @@
 
   .container{
     margin: 20px 5px 0 50px;
-    border: 1px solid black;
     height: 85vh;
     padding :50px 50px 0 90px;
       }
@@ -54,9 +53,9 @@
 }
 .prev-ques{
     padding-left: 20px;
+    color :#3286DD;
 }
 .prev-ques span{
-    color :#3286DD;
     font-size: 0.8rem;
     margin: 10px 0;
 }
@@ -68,4 +67,15 @@
     border-top:1px solid #707070;
     float: right;
     width: 100%;
+}
+.my-select {
+  width: 200px;
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size:small;
+}
+
+.my-select option {
+  padding: 2px;
 }

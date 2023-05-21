@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 function MyForm({closePopup}) {
-  const [formData, setFormData] = useState({
+  const [themeData, setThemeData] = useState({
     themeOpt: '',
     themeName: '',
     themeType: '',
@@ -16,7 +16,7 @@ function MyForm({closePopup}) {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevState) => ({
+    setThemeData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -24,12 +24,17 @@ function MyForm({closePopup}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
-    const formDataString = JSON.stringify(formData);
-
-  localStorage.setItem("formData", formDataString);
-  closePopup()
+    if (!themeData.themeOpt || !themeData.themeName || !themeData.themeType || !themeData.fromType || !themeData.allQuestionMandatory || !themeData.enableSkip || !themeData.optionType || !themeData.font || !themeData.color) {
+      console.log('Please fill all required fields');
+    }else{
+      
+    // console.log(themeData);
+    const themeDataString = JSON.stringify(themeData);
+    localStorage.setItem('themeData', themeDataString);
+    closePopup();
+    }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -39,7 +44,7 @@ function MyForm({closePopup}) {
         <select
           id="themeOpt"
           name="themeOpt"
-          value={formData.themeOpt}
+          value={themeData.themeOpt}
           onChange={handleInputChange}
         >
           <option value=""> Select </option>
@@ -55,8 +60,7 @@ function MyForm({closePopup}) {
             type="text"
             id="themeName"
             name="themeName"
-            placeholder="Theme 1"
-            value={formData.themeName}
+            value={themeData.themeName}
             onChange={handleInputChange}
           />
         </div>
@@ -66,7 +70,7 @@ function MyForm({closePopup}) {
           <select
             id="themeType"
             name="themeType"
-            value={formData.themeType}
+            value={themeData.themeType}
             onChange={handleInputChange}
           >
             <option value=""> Select </option>
@@ -79,7 +83,7 @@ function MyForm({closePopup}) {
           <select
             id="fromType"
             name="fromType"
-            value={formData.fromType}
+            value={themeData.fromType}
             onChange={handleInputChange}
           >
             <option value=""> Select </option>
@@ -92,7 +96,7 @@ function MyForm({closePopup}) {
           <select
             id="allQuestionMandatory"
             name="allQuestionMandatory"
-            value={formData.allQuestionMandatory}
+            value={themeData.allQuestionMandatory}
             onChange={handleInputChange}
           >
             <option value=""> Select </option>
@@ -106,7 +110,7 @@ function MyForm({closePopup}) {
           <select
             id="enableSkip"
             name="enableSkip"
-            value={formData.enableSkip}
+            value={themeData.enableSkip}
             onChange={handleInputChange}
           >
             <option value=""> Select </option>
@@ -120,7 +124,7 @@ function MyForm({closePopup}) {
           <select
             id="optionType"
             name="optionType"
-            value={formData.optionType}
+            value={themeData.optionType}
             onChange={handleInputChange}
             >
               <option value=""> Select </option>
@@ -136,7 +140,7 @@ function MyForm({closePopup}) {
             <select
               id="font"
               name="font"
-              value={formData.font}
+              value={themeData.font}
               onChange={handleInputChange}
             >
               <option value=""> Select </option>
@@ -151,7 +155,7 @@ function MyForm({closePopup}) {
             <select
               id="color"
               name="color"
-              value={formData.color}
+              value={themeData.color}
               onChange={handleInputChange}
             >
               <option value=""> Select </option>
