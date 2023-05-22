@@ -17,9 +17,7 @@ function Sidebar() {
     return (
 
         <>
-        <div className="logo">
-        <span className="logo-txt">LOGO</span>
-        <img src="" alt=""></img>
+        
         <div className="sidebar">
             <ul>
                 <li className='home' onClick={handleSubmit}>
@@ -34,7 +32,7 @@ function Sidebar() {
                 </li>
             </ul>
         </div>
-    </div>
+   
     </>
 
     )

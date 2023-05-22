@@ -1,6 +1,10 @@
+.left{
+    display: flex;
+
+}
 .main-list{
     background-color: white;
-    margin: 0px 0px 0 50px;
+    margin: 0px 0px  0px 50px;
 }
 
 .Survey{
@@ -11,7 +15,7 @@
 .list-page{
 background: #FAFDFF;
 margin: 50px 20px 0px 150px;
-width: 600vh;
+width: 160vh;
 height: 80vh;
 }
 table thead tr th{
