@@ -12,7 +12,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./SurveyItems.css";
 import Sidebar from "./Sidebar";
+import Header from './Navigation'
+
 const REACT_APP_API_ENDPOINT='http://localhost:5001'
+
 
 const SurveyItems = () => {
     const email = localStorage.getItem('email')
