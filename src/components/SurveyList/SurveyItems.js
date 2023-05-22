@@ -14,7 +14,7 @@ import {
 //import { IconName } from '@material-ui/icons';
 import "./SurveyItems.css";
 import Sidebar from "./Sidebar";
-import Header from './Header'
+import Header from './Navigation'
 
 const SurveyItems = () => {
     const navigate = useNavigate();
