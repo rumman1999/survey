@@ -32,7 +32,7 @@ function SignIn() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(validateForm());
+        // console.log(validateForm());
         if (validateForm()) {
             const loginData = {
                 email,
@@ -58,19 +58,19 @@ function SignIn() {
             })
             .then(data => {
               const token = data.token;
-              console.log('Login successful');
-              console.log(token);
+              // console.log('Login successful');
+              // console.log(token);
               localStorage.setItem('token' , token)
               localStorage.setItem('email' , email)
               setFail('');
               navigate('/surveyItems');
             })
             .catch(error => {
-              console.log('Login failed:', error);
+              // console.log('Login failed:', error);
               setFail(error.message);
             });
         } else {
-            console.log('Invalid form');
+            // console.log('Invalid form');
             
         }
     };

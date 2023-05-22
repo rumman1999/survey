@@ -17,67 +17,68 @@ const REACT_APP_API_ENDPOINT='http://localhost:5001'
 const SurveyItems = () => {
     const email = localStorage.getItem('email')
   const navigate = useNavigate();
-    const [surveys, setSurveys] = useState([
-        {
-            id: 1,
-            name: "Survey 1",
-            type: "Image",
-            description: "Description 1",
-            startDate: "2023-01-01",
-            endDate: "2023-01-10",
-        },
-        {
-            id: 3,
-            name: "Survey 2",
-            type: "Video",
-            description: "Description 2",
-            startDate: "2023-02-01",
-            endDate: "2023-02-10",
-        },
-        {
-            id: 4,
-            name: "Survey 2",
-            type: "Type 2",
-            description: "Description 2",
-            startDate: "2023-02-01",
-            endDate: "2023-02-10",
-        },
-        {
-            id: 5,
-            name: "Survey 2",
-            type: "Video",
-            description: "Description 2",
-            startDate: "2023-02-01",
-            endDate: "2023-02-10",
-        },
-        {
-            id: 6,
-            name: "Survey 2",
-            type: "Image",
-            description: "Description 2",
-            startDate: "2023-02-01",
-            endDate: "2023-02-10",
-        },
-        {
-            id: 7,
-            name: "Survey 2",
-            type: "Image",
-            description: "Description 2",
-            startDate: "2023-02-01",
-            endDate: "2023-02-10",
-        },
+    // const [surveys, setSurveys] = useState([
+        // {
+        //     id: 1,
+        //     name: "Survey 1",
+        //     type: "Image",
+        //     description: "Description 1",
+        //     startDate: "2023-01-01",
+        //     endDate: "2023-01-10",
+        // },
+        // {
+        //     id: 3,
+        //     name: "Survey 2",
+        //     type: "Video",
+        //     description: "Description 2",
+        //     startDate: "2023-02-01",
+        //     endDate: "2023-02-10",
+        // },
+        // {
+        //     id: 4,
+        //     name: "Survey 2",
+        //     type: "Type 2",
+        //     description: "Description 2",
+        //     startDate: "2023-02-01",
+        //     endDate: "2023-02-10",
+        // },
+        // {
+        //     id: 5,
+        //     name: "Survey 2",
+        //     type: "Video",
+        //     description: "Description 2",
+        //     startDate: "2023-02-01",
+        //     endDate: "2023-02-10",
+        // },
+        // {
+        //     id: 6,
+        //     name: "Survey 2",
+        //     type: "Image",
+        //     description: "Description 2",
+        //     startDate: "2023-02-01",
+        //     endDate: "2023-02-10",
+        // },
+        // {
+        //     id: 7,
+        //     name: "Survey 2",
+        //     type: "Image",
+        //     description: "Description 2",
+        //     startDate: "2023-02-01",
+        //     endDate: "2023-02-10",
+        // },
         // Add more survey objects as needed
-    ]);
-    // const [surveys, setSurveys] = useState([])
-    // useEffect(()=>{
-    //     const respond = fetchData(`${REACT_APP_API_ENDPOINT}/surveys` , email)
-    // } , [])
+    // ]);
+    const [surveys, setSurveys] = useState([])
+    useEffect(()=>{
+        const respond = fetchData(`${REACT_APP_API_ENDPOINT}/surveys/${email}`)
+        // console.log(respond);
+    } , [])
     const [isEditing, setIsEditing] = useState(false);
     const [editedSurvey, setEditedSurvey] = useState({});
     const [newSurvey, setNewSurvey] = useState({
         id: null,
         name: "",
-        type: "",
+        surveyType: "",
         description: "",
         startDate: "",
         endDate: "",
@@ -86,7 +87,7 @@ const SurveyItems = () => {
         const apiUrl = new URL(url);
         apiUrl.searchParams.append('email', email);
       
-        console.log(apiUrl);
+        // console.log(apiUrl);
         return fetch(apiUrl)
           .then(response => {
             if (!response.ok) {
@@ -95,6 +96,8 @@ const SurveyItems = () => {
             return response.json();
           })
           .then(data => {
+            console.log(data.result);
+            setSurveys(data.result);
             return data;
           })
           .catch(error => {
@@ -126,7 +129,7 @@ const SurveyItems = () => {
             setNewSurvey({
                 id: null,
                 name: "",
-                type: "",
+                surveyType: "",
                 description: "",
                 startDate: "",
                 endDate: "",
@@ -176,7 +179,7 @@ const SurveyItems = () => {
                                 {surveys.map((survey) => (
                                     <tr key={survey.id}>
                                         <td className="table-data">{survey.name}</td>
-                                        <td className="table-data">{survey.type}</td>
+                                        <td className="table-data">{survey.surveyType}</td>
                                         <td className="table-data">{survey.description}</td>
                                         <td className="table-data">{survey.startDate}</td>
                                         <td className="table-data">{survey.endDate}</td>
