@@ -17,6 +17,7 @@ function App() {
         <Route path="/surveyForm" element={<SurveyForm />} />
         <Route path="/createQues" element={<CreateQuestion />} />
         <Route path="/preview" element={<Preview />} />
+        
       </Routes>
     </Router>
   );
