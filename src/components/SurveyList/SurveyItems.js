@@ -125,6 +125,7 @@ const SurveyItems = () => {
             <Header />
             <div className="left">
                 <Sidebar />
+
                 <div className="main-list">
 
                     <div className="Survey">
@@ -235,8 +236,9 @@ const SurveyItems = () => {
                     </div>
                 </div>
             </div>
-
         </>
+
+
     );
 };
 

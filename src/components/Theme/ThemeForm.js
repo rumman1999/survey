@@ -1,7 +1,14 @@
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
-function MyForm({closePopup}) {
+function MyForm({ closePopup }) {
+  
+  const email = localStorage.getItem('email')
+  const surveyName= localStorage.getItem('surveyName')
+  
+  // console.log(email , surveyName);
+
   const [themeData, setThemeData] = useState({
     themeOpt: '',
     themeName: '',
@@ -24,17 +31,41 @@ function MyForm({closePopup}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!themeData.themeOpt || !themeData.themeName || !themeData.themeType || !themeData.fromType || !themeData.allQuestionMandatory || !themeData.enableSkip || !themeData.optionType || !themeData.font || !themeData.color) {
-      console.log('Please fill all required fields');
-    }else{
-      
-    // console.log(themeData);
-    const themeDataString = JSON.stringify(themeData);
-    localStorage.setItem('themeData', themeDataString);
-    closePopup();
-    }
+    const newTheme = {
+      email,
+      surveyName,
+       themeOpt:themeData.themeOpt,
+       themeName:themeData.themeName,
+       themeType:themeData.themeType,
+       fromType:themeData.fromType,
+       allQuestionMandatory:themeData.allQuestionMandatory,
+       enableSkip:themeData.enableSkip,
+       optionType:themeData.optionType,
+       font:themeData.font,
+       color:themeData.color
+    };
+fetch(`${REACT_APP_API_ENDPOINT}/themes`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(newTheme),
+})
+  .then(response => {
+    if (response.status === 201) {
+      // console.log('created');
+    }else if (response.status === 200) {
+      // console.log('updated');
+    } else  {
+      throw new Error('error in creation');
+    } 
+    closePopup(false)
+  })
+  .catch(error => {
+    console.log( error);
+  });
+    
   };
-  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -46,6 +77,7 @@ function MyForm({closePopup}) {
           name="themeOpt"
           value={themeData.themeOpt}
           onChange={handleInputChange}
+          required
         >
           <option value=""> Select </option>
           <option value="normalTheme">Normal</option>
@@ -62,6 +94,7 @@ function MyForm({closePopup}) {
             name="themeName"
             value={themeData.themeName}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div>
@@ -72,6 +105,7 @@ function MyForm({closePopup}) {
             name="themeType"
             value={themeData.themeType}
             onChange={handleInputChange}
+            required
           >
             <option value=""> Select </option>
             <option value="option1">Survey</option>
@@ -85,6 +119,7 @@ function MyForm({closePopup}) {
             name="fromType"
             value={themeData.fromType}
             onChange={handleInputChange}
+            required
           >
             <option value=""> Select </option>
             <option value="option1">One to One</option>
@@ -98,6 +133,7 @@ function MyForm({closePopup}) {
             name="allQuestionMandatory"
             value={themeData.allQuestionMandatory}
             onChange={handleInputChange}
+            required
           >
             <option value=""> Select </option>
             <option value="option1">No</option>
@@ -112,6 +148,7 @@ function MyForm({closePopup}) {
             name="enableSkip"
             value={themeData.enableSkip}
             onChange={handleInputChange}
+            required
           >
             <option value=""> Select </option>
             <option value="option1">Yes</option>
@@ -126,53 +163,58 @@ function MyForm({closePopup}) {
             name="optionType"
             value={themeData.optionType}
             onChange={handleInputChange}
-            >
-              <option value=""> Select </option>
-              <option value="box">Box</option>
-              <option value="dropdown">Dropdown</option>
-            </select>
-          </div>
+            required
+          >
+            <option value=""> Select </option>
+            <option value="box">Box</option>
+            <option value="dropdown">Dropdown</option>
+          </select>
         </div>
-        <div className="formPart3">
-          <div>
-            <label htmlFor="font">Font</label>
-            <br />
-            <select
-              id="font"
-              name="font"
-              value={themeData.font}
-              onChange={handleInputChange}
-            >
-              <option value=""> Select </option>
-              <option value="roboto">Roboto</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="ariel">Ariel</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="color">Color</label>
-            <br />
-            <select
-              id="color"
-              name="color"
-              value={themeData.color}
-              onChange={handleInputChange}
-            >
-              <option value=""> Select </option>
-              <option value="red">Red</option>
-              <option value="blue">Blue</option>
-              <option value="green">Green</option>
-            </select>
-          </div>
+      </div>
+      <div className="formPart3">
+        <div>
+          <label htmlFor="font">Font</label>
+          <br />
+          <select
+            id="font"
+            name="font"
+            value={themeData.font}
+            onChange={handleInputChange}
+            required
+          >
+            <option value=""> Select </option>
+            <option value="roboto">Roboto</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="ariel">Ariel</option>
+          </select>
         </div>
-        <div className="my-btn">
-          <button className="cancelBtn" onClick={closePopup}>cancel</button>
-          <button type="submit" className="saveBtn">
-            save
-          </button>
+        <div>
+          <label htmlFor="color">Color</label>
+          <br />
+          <select
+            id="color"
+            name="color"
+            value={themeData.color}
+            onChange={handleInputChange}
+            required
+          >
+            <option value=""> Select </option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+          </select>
         </div>
-      </form>
-  )
+      </div>
+      <div className="my-btn">
+        <button className="cancelBtn" onClick={closePopup}>
+          cancel
+        </button>
+        <button type="submit" className="saveBtn">
+          save
+        </button>
+      </div>
+    </form>
+  );
 }
-export  default MyForm
-      
+
+export default MyForm;

@@ -3,38 +3,48 @@ import { useNavigate } from 'react-router-dom';
 import "./Preview.css";
 import PrevQues from "./PrevQues";
 import Sidebar from "../SurveyList/Sidebar";
+const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
 function Preview() {
   const navigate = useNavigate()
-  const [themeData, setThemeData]  = useState({
-    themeOpt: 'Normal',
-    themeName: 'Theme 1',
-    themeType: 'Survey',
-    fromType: 'One to One',
-    allQuestionMandatory: 'No',
-    enableSkip: 'Yes',
-    optionType: 'Box',
-    font: 'Roboto',
-    color: 'Blue',
-  });
+
+  const email = localStorage.getItem('email')
+  const surveyName= localStorage.getItem('surveyName')
+
+  const [themeData, setThemeData] = useState({});
 
   useEffect(() => {
-    const storedData = localStorage.getItem('themeData');
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setThemeData(parsedData);
-    }
-    console.log(themeData);
+    fetch(`${REACT_APP_API_ENDPOINT}/theme`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, surveyName }),
+    })
+      .then(response => {
+        if (response.status === 200) {
+          return response.json();
+        } else if (response.status === 404) {
+          throw new Error('No user Found Please Register First');
+        } else {
+          throw new Error('Login failed');
+        }
+      })
+      .then(data => {
+        console.log(data)
+        const token = data;
+        setThemeData(data);
+      })
+      .catch(error => {
+        console.log('Login failed:', error);
+      });
   }, []);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(themeData);
-    const themeDataString = JSON.stringify(themeData);
-
-    localStorage.setItem('themeData', themeDataString);
-    
-    navigate('/createQues')
+    localStorage.removeItem('surveyName');
+    navigate('/surveyitems')
   };
   const handleClose = (e) => {
     e.preventDefault();
@@ -71,7 +81,7 @@ options:["true" , "false" ]
       </div>
       {
         arr.map((ques , index)=>(
-            <PrevQues ques={ques} index={index} themeData={themeData}/>
+            <PrevQues key={index} ques={ques} index={index} themeData={themeData}/>
         ))
       }
     </div>
