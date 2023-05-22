@@ -1,6 +1,4 @@
-
-
-      import React, { useState, } from 'react';
+import React, { useState, } from 'react';
 import './createsurvey.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../SurveyList/Sidebar';
@@ -11,47 +9,20 @@ const SurveyForm = () => {
   const navigate = useNavigate();
   
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState('N/A');
   const [surveyType, setSurveyType] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [criteria, setCriteria] = useState('');
+  const [criteria, setCriteria] = useState('N/A');
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState({});
   const email = localStorage.getItem('email')
   // console.log(email);
   
-  const validateForm = () => {
-    const errors = {};
-    if (name.trim() === '') {
-      errors.name = 'Name is required';
-    }
-    if (description.trim() === '') {
-      errors.description = 'Description is required';
-    }
-    if (surveyType.trim() === '') {
-      errors.surveyType = 'Survey type is required';
-    }
-    if (startDate.trim() === '') {
-      errors.startDate = 'Start date is required';
-    }
-    if (endDate.trim() === '') {
-      errors.endDate = 'End date is required';
-    }
-    if (criteria.trim() === '') {
-      errors.criteria = 'Criteria is required';
-    }
-    if (!image) {
-      errors.image = 'Image is required';
-    }
-    return errors;
-  };
   
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    const errors = validateForm();
-    if (Object.keys(errors).length === 0) {
       const formData = new FormData();
       formData.append('name', name);
       formData.append('email', email);
@@ -65,20 +36,23 @@ const SurveyForm = () => {
         method: 'POST',
         body: formData,
       })
-        .then((response) => {
+        .then(response => {
           if (response.status === 200) {
-            console.log('Survey created successfully');
-            navigate('/createQues');
+            return response.json();
           } else {
-            throw new Error(response);
+            throw new Error('Survey creation failed');
           }
         })
-        .catch((error) => {
-          console.log('Survey creation failed:', error);
+        .then(data => {
+          console.log(data.result._id);
+          localStorage.setItem('id', data.result._id);
+          return data;
+        })
+        .catch(error => {
+          console.error(error);
         });
-    } else {
-      console.log('Invalid form');
-    }
+      
+    navigate('/createQues');
   };
   
   const handleCancle = (e) =>{

@@ -4,7 +4,6 @@ import ThemeForm from "./ThemeForm";
  
 function Theme(){
     //part to be done in create survey component 
- localStorage.setItem( 'surveyName', 'survey 1')
  //
     const [popup,setPop]=useState(false)
     const handleClickOpen=()=>{
