@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "./Preview.css";
 import PrevQues from "./PrevQues";
 import Sidebar from "../SurveyList/Sidebar";
+import Navigation from "../SurveyList/Navigation";
 const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
 function Preview() {
@@ -65,6 +66,8 @@ options:["true" , "false" ]
   ];
   return (
     <>
+    <Navigation/>
+        <div className="frame">
     <Sidebar/>
     <div className="container">
       <div className="top-part">
@@ -79,11 +82,14 @@ options:["true" , "false" ]
           <span className="myBtn"></span>
         </span>
       </div>
+      <div className="pre">
       {
         arr.map((ques , index)=>(
             <PrevQues key={index} ques={ques} index={index} themeData={themeData}/>
         ))
       }
+      </div>
+    </div>
     </div>
     </>
   );

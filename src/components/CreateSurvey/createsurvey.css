@@ -3,7 +3,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin: 20px 100px 0 200px;
+    margin: 90px 100px 0 200px;
   }
   
   .logo-container {
@@ -70,7 +70,9 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-  }
+  }.frame{
+    display: flex;
+}
   
   .cancel-button {
     background-color: white;

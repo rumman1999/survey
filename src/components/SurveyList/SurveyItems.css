@@ -14,9 +14,10 @@
 
 .list-page{
 background: #FAFDFF;
-margin: 50px 20px 0px 150px;
+margin: 60px 20px 0px 150px;
 width: 160vh;
 height: 80vh;
+padding: 20px;
 }
 table thead tr th{
     padding:20px;
@@ -37,4 +38,7 @@ table thead tr th{
 .list-page .search input{
     margin-top: 50px;
     
+}
+.frame{
+    display: flex;
 }
