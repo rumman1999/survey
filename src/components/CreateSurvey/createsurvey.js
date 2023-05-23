@@ -2,6 +2,7 @@ import React, { useState, } from 'react';
 import './createsurvey.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../SurveyList/Sidebar';
+import Navigation from '../SurveyList/Navigation';
 const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
 
@@ -65,7 +66,10 @@ const SurveyForm = () => {
   };
 
   return (<>
-    <Sidebar/>
+    <Navigation/>
+        <div className="frame">
+        
+        <Sidebar/>
     <div id="survey">
     <div className="heading-container">
       <h2>Create Survey</h2>
@@ -170,6 +174,7 @@ const SurveyForm = () => {
           </div>
         </div>
       </form>
+    </div>
     </div>
   </>
     

@@ -7,6 +7,8 @@ import {
     faHamburger,
     faHouse,
 } from "@fortawesome/free-solid-svg-icons";
+import Navigation from './Navigation';
+import SurveyItems from './SurveyItems';
 
 function Sidebar() {
     const navigate = useNavigate();
@@ -17,7 +19,6 @@ function Sidebar() {
     return (
 
         <>
-        
         <div className="sidebar">
             <ul>
                 <li className='home' onClick={handleSubmit}>

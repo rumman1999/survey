@@ -1,21 +1,21 @@
 import React from "react";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 import "./Navigation.css";
 
 
-function Header() {
+function Navigation() {
     const navigate = useNavigate();
     function handleLogout() {
-        localStorage.removeItem("token");
+        localStorage.clear()
         navigate("/");
     }
     return (
         <div>
 
-            <Navbar
-                className="navbar  justify-content-between  "
+            <Navbar id="navbar"
+                className="justify-content-between  "
                 style={{
                     paddingLeft: "20px",
                     paddingRight: "140px",
@@ -39,4 +39,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default Navigation;

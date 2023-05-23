@@ -12,65 +12,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./SurveyItems.css";
 import Sidebar from "./Sidebar";
-import Header from './Navigation'
+import Navigation from './Navigation'
 
 const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
 
 const SurveyItems = () => {
     const email = localStorage.getItem('email')
-  const navigate = useNavigate();
-    // const [surveys, setSurveys] = useState([
-        // {
-        //     id: 1,
-        //     name: "Survey 1",
-        //     type: "Image",
-        //     description: "Description 1",
-        //     startDate: "2023-01-01",
-        //     endDate: "2023-01-10",
-        // },
-        // {
-        //     id: 3,
-        //     name: "Survey 2",
-        //     type: "Video",
-        //     description: "Description 2",
-        //     startDate: "2023-02-01",
-        //     endDate: "2023-02-10",
-        // },
-        // {
-        //     id: 4,
-        //     name: "Survey 2",
-        //     type: "Type 2",
-        //     description: "Description 2",
-        //     startDate: "2023-02-01",
-        //     endDate: "2023-02-10",
-        // },
-        // {
-        //     id: 5,
-        //     name: "Survey 2",
-        //     type: "Video",
-        //     description: "Description 2",
-        //     startDate: "2023-02-01",
-        //     endDate: "2023-02-10",
-        // },
-        // {
-        //     id: 6,
-        //     name: "Survey 2",
-        //     type: "Image",
-        //     description: "Description 2",
-        //     startDate: "2023-02-01",
-        //     endDate: "2023-02-10",
-        // },
-        // {
-        //     id: 7,
-        //     name: "Survey 2",
-        //     type: "Image",
-        //     description: "Description 2",
-        //     startDate: "2023-02-01",
-        //     endDate: "2023-02-10",
-        // },
-        // Add more survey objects as needed
-    // ]);
+    const navigate = useNavigate();
     const [surveys, setSurveys] = useState([])
     useEffect(()=>{
         const respond = fetchData(`${REACT_APP_API_ENDPOINT}/surveys/${email}`)
@@ -149,6 +98,10 @@ const SurveyItems = () => {
 
     return (
         <>
+        
+        <Navigation/>
+        <div className="frame">
+        
         <Sidebar/>
             <div className="main-list">
                 
@@ -259,6 +212,7 @@ const SurveyItems = () => {
                     </div>
                 </div>
             </div>
+        </div>
         </>
     );
 };

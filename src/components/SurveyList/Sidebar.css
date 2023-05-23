@@ -1,29 +1,18 @@
 
-/* .sidebar{
-    width: 50px;
-    height: 100vh;
-    background-color: #278DF1;
-    align-items: center;
-
-}
-.sidebar ul {
-    list-style: none;
-    padding: 250px 5px 60px 5px;
-} */
 .sidebar{
-    /* margin-top: 50px; */
+    margin-top: 56px;
     width: 40px;
     height: 100vh;
     background-color: #278DF1;
     align-items: center;
     font-size: 25px;
     color: white;
+    position: fixed;
 
 
 }
 .sidebar ul {
     list-style: none;
-    margin-top: 14px;
     padding: 250px 10px 60px 5px;
 }
 
