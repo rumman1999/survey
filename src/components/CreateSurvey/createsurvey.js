@@ -3,7 +3,7 @@ import './createsurvey.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../SurveyList/Sidebar';
 import Navigation from '../SurveyList/Navigation';
-const REACT_APP_API_ENDPOINT='http://localhost:5001'
+const REACT_APP_API_ENDPOINT='https://survey-backend-g0aa.onrender.com'
 
 
 const SurveyForm = () => {

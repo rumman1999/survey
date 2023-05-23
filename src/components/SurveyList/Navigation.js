@@ -24,6 +24,7 @@ function Navigation() {
             >
                 <Nav className="logo">LOGO</Nav>
                 <Nav>
+                <Nav className="logo">logout</Nav>
                     <NavDropdown>
                         <NavDropdown.Item
                             className="custom-dropdown"

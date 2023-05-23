@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../SurveyList/Sidebar';
 import Theme from '../Theme/Theme';
 import Navigation from '../SurveyList/Navigation';
-const REACT_APP_API_ENDPOINT='http://localhost:5001'
+const REACT_APP_API_ENDPOINT='https://survey-backend-g0aa.onrender.com'
 
 const CreateQuestion = () => {
   const email = localStorage.getItem('email')
@@ -17,26 +17,80 @@ const CreateQuestion = () => {
     navigate('/preview');
   };
 
-  const [questionText, setQuestionText] = useState('question 1');
-  const [option, setOption] = useState(['option1' , 'option2' ,'option3']);
+  const [questionText, setQuestionText] = useState('');
+  const [option, setOption] = useState(['option1' , 'option2' , 'option3']);
   const [questions, setQuestions] = useState([]);
 
   useEffect(()=>{
     const respond = fetchData(`${REACT_APP_API_ENDPOINT}/ques/${surveyId}`)
-  },[])
+  },[surveyId])
 
   const handleQuestionTextChange = (e) => {
     setQuestionText(e.target.value);
   };
 
-  const handleAddQuestion = () => {
-    console.log(surveyId, email, questionText, option);
-    const newQues = {surveyId, email, questionText, option
-    };
-        const respond = fetchData(`${REACT_APP_API_ENDPOINT}/ques/${surveyId}`)
-        // console.log(`${REACT_APP_API_ENDPOINT}/ques/${surveyId}`)
-
+  // const handleAddQuestion = () => {
+  //   // console.log(surveyId, email, questionText, option);
+  //   const newQues = {surveyId, email, questionText, option};
+  //       const respond = fetchData(`${REACT_APP_API_ENDPOINT}/ques/${surveyId}`)
+  //       fetch(`${REACT_APP_API_ENDPOINT}/ques`, {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify(newQues),
+  //       })
+  //         .then(response => {
+  //           if (response.status === 201) {
+  //             // console.log('created');
+  //           }else if (response.status === 200) {
+  //             // console.log('updated');
+  //           } else  {
+  //             throw new Error('error in creation');
+  //           } 
+  //         })
+  //         .catch(error => {
+  //           console.log( error);
+  //         });
+  //         setQuestionText('')
+  //         setOption(['option1' , 'option2' , 'option3'])
+  //     // console.log(questions);
       
+  // };
+
+  const handleAddQuestion = async () => {
+    const newQues = { surveyId, email, questionText, option };
+  
+    try {
+      await fetch(`${REACT_APP_API_ENDPOINT}/ques`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newQues),
+      });
+  
+      const updatedQuestions = await fetchData(`${REACT_APP_API_ENDPOINT}/ques/${surveyId}`);
+      setQuestions(updatedQuestions.result);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  
+    setQuestionText('');
+    setOption(['option1', 'option2', 'option3']);
+  };
+  
+
+  const handleAddOption = () => {
+    let newOption = `option${option.length+1}`
+    setOption([...option, newOption]);
+    // console.log(option);
+  };
+
+  const handleRemoveOption = (index) => {
+    const updatedOption = [...option];
+    updatedOption.splice(index, 1);
+    setOption(updatedOption);
   };
   
   function fetchData(url) {
@@ -48,7 +102,7 @@ const CreateQuestion = () => {
         return response.json();
       })
       .then(data => {
-        console.log(data.result);
+        // console.log(data.result);
         setQuestions(data.result);
         return data;
       })
@@ -57,18 +111,10 @@ const CreateQuestion = () => {
       });
   }
 
-  const handleOptionChange = (questionId, option) => {
-    const updatedQuestions = questions.map((question) => {
-      if (question.id === questionId) {
-        return { ...question, selectedOption: option };
-      }
-      return question;
-    });
-    setQuestions(updatedQuestions);
-  };
-
   const handleSave = () => {
-    navigate('/surveyItems');
+    localStorage.removeItem('surveyName');
+    localStorage.removeItem('id');
+    navigate('/surveyitems')
   };
 
   return (
@@ -97,66 +143,69 @@ const CreateQuestion = () => {
         {/* Render existing questions */}
         <div className="pre">
         {questions.map((question, index) => (
-          <div key={question.id} className="question-container">
+          
+          <div key={question._id} className="question-container">
             <div className="question-wrapper">
               <span className="question-number">{`Q${index + 1}`}</span>
               <span className="question-text">{`Question ${index + 1}:`}</span>
               <div>
-                <textarea
+                <input className='input-box'
                   value={question.questionText}
                   onChange={(e) =>
                     handleQuestionTextChange(e, question.id)
                   }
                   placeholder="Enter your question here"
-                ></textarea>
+                />
               </div>
             </div>
 
-            {question.option.map((option) => (
-              <div key={option}>
+            {question.option.map((option , optIndex) => (
+              <div key={optIndex}>
                 <label>
                   <input
                     type="radio"
-                    name={`question${question.id}`}
+                    name={`question${question._id}`}
                     value={option}
                     checked={question.selectedOption === option}
-                    onChange={() => handleOptionChange(question.id, option)}
                   />
                   {option}
                 </label>
               </div>
             ))}
+            
           </div>
         ))}
+      
 
         {/* Render new question input */}
         <div className="question-container">
           <div className="question-wrapper">
             <span className="question-number">{`Q${questions.length + 1}`}</span>
             <span className="question-text">{`Question ${questions.length + 1}:`}</span>
-            <div>
-              <textarea
+            <div >
+              <textarea className='input-box'
                 value={questionText}
                 onChange={handleQuestionTextChange}
                 placeholder="Enter your question here"
               ></textarea>
             </div>
           </div>
-          {/* Add options for new question */}
-          {['Option 1', 'Option 2', 'Option 3'].map((option) => (
-            <div key={option}>
-              <label>
-                <input
-                  type="radio"
-                  name={`question${questions.length + 1}`}
-                  value={option}
-                  checked={false}
-                  onChange={() => handleOptionChange(questions.length + 1, option)}
-                />
-                {option}
-              </label>
-            </div>
-          ))}
+          {/* Add option for new question */}
+          {option.map((option, index) => (
+        <div key={index} className="option">
+          <input
+            type="radio"
+            name={`option${index}`}
+            value={option}
+          />
+          <span>Option{index+1}</span>
+          {index === 0 ? (
+            <button className='m-btn' onClick={handleAddOption}>+</button>
+          ) : (
+            <button className='m-btn' onClick={() => handleRemoveOption(index)}>-</button>
+          )}
+        </div>
+      ))}
         </div>
 
         {/* Add question button */}
@@ -170,6 +219,7 @@ const CreateQuestion = () => {
       </div>
       </div>
       </div>
+      <div className='foot'>*After clicking on Add Button please wait to load</div>
     </>
   );
 };

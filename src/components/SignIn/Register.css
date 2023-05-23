@@ -3,12 +3,12 @@
     width: 550px;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 12px #00000029;
+    box-shadow: 12px 12px  #c4c4c429;
     text-align: center;
     /* height: 700px; */
     justify-content: center;
     align-items: center;
-    margin-top: -80px;
+    margin-top: -120px;
     color: #808080;
 }
 .Register h1{
@@ -40,14 +40,7 @@
     width: 200px;
     border: none;
     border-bottom: 1px solid #808080;
-    /* padding: 10px; */
-    
   }
-  /* .form-group checkbox-group  .checkbox-input{
-    font-size: 16px;
-    color: #808080;
-    
-  } */
   .checkbox{
     margin: 0%;
     padding: 0%;
@@ -65,8 +58,7 @@
     color: #53A4F4;
   }
   .btn1 button{
-    margin: 20px; 
-    /* justify-content: center;
-    text-align: center;
-    align-items: center; */
+    margin-top: 20px; 
+    border-radius: 10px;
+    margin-bottom: 10px;
   }

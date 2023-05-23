@@ -6,7 +6,8 @@
     background: linear-gradient(to bottom, white, #6ED4FF);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 70vh;
+    height: 69.634vh;
+    border: none;
     /* margin: auto; */
   }
   .main-continer{
@@ -15,6 +16,7 @@
     
     display: flex;
     justify-content: space-between;
+    padding-bottom:20px
 
   }
   .heading1  .text1{
@@ -52,8 +54,9 @@
         width: 400px;
         text-align: center;
         background-color: #FFFFFF;
-        box-shadow: 12px #00000029;
+        box-shadow: 12px 12px #c4c4c429;
         border-radius: 12px;
+        padding-bottom: 10px;
   }
   .signin .text{
     font-size: 20px;
@@ -79,5 +82,9 @@
     
   }
   .btn button{
-    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  .register{
+
+    border-radius: 10px;
   }

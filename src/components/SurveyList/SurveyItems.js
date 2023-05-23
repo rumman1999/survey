@@ -48,7 +48,7 @@ const SurveyItems = () => {
             return response.json();
           })
           .then(data => {
-            console.log(data.result);
+            // console.log(data.result);
             setSurveys(data.result);
             return data;
           })
@@ -65,7 +65,7 @@ const SurveyItems = () => {
     };
 
     const handleDeleteSurvey = (surveyId) => {
-        setSurveys(surveys.filter((survey) => survey.id !== surveyId));
+        fetchData(`${REACT_APP_API_ENDPOINT}/survey/${surveyId}`)
     };
 
     const handleSaveSurvey = () => {
@@ -147,7 +147,7 @@ const SurveyItems = () => {
                                             {/* <button >
                                                 Delete
                                             </button> */}
-                                            <FontAwesomeIcon className="edit" icon={faDeleteLeft} onClick={() => handleDeleteSurvey(survey.id)} />
+                                            <FontAwesomeIcon className="edit" icon={faDeleteLeft} onClick={() => handleDeleteSurvey(survey._id)} />
                                         </td>
                                     </tr>
                                 ))}

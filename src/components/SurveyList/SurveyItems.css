@@ -12,17 +12,37 @@
     height: max-content;
 }
 
-.list-page{
-background: #FAFDFF;
-margin: 60px 20px 0px 150px;
-width: 160vh;
-height: 88vh;
-padding: 20px;overflow-y: auto;
-}
-/* tbody{
-
-    /* overflow-y: auto; */
-/* } */ 
+.list-page {
+    background: #FAFDFF;
+    margin: 60px 20px 0px 150px;
+    width: 160vh;
+    height: 88vh;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .list-page::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+  }
+  
+  .list-page::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+  }
+  
+  .list-page::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  
+  .list-page::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+  }
+  
+  .list-page::-webkit-scrollbar-track:hover {
+    background-color: #eee;
+  }
+  
 table thead tr th{
     padding:20px;
     background-color: #F8FAFF;
