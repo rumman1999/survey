@@ -116,7 +116,7 @@ const SurveyItems = () => {
 
                             <div className="create">
                                 <FontAwesomeIcon icon={faFilter} />
-                                <button onClick={handleSaveSurvey}>Create</button>
+                                <button className="save" onClick={handleSaveSurvey}>Create</button>
                             </div>
                         </div>
 
@@ -143,11 +143,11 @@ const SurveyItems = () => {
                                             {/* <button >
                                                 Edit
                                             </button> */}
-                                            <FontAwesomeIcon icon={faEdit} onClick={() => handleEditSurvey(survey.id)} />
+                                            <FontAwesomeIcon className="edit" icon={faEdit} onClick={() => handleEditSurvey(survey.id)} />
                                             {/* <button >
                                                 Delete
                                             </button> */}
-                                            <FontAwesomeIcon icon={faDeleteLeft} onClick={() => handleDeleteSurvey(survey.id)} />
+                                            <FontAwesomeIcon className="edit" icon={faDeleteLeft} onClick={() => handleDeleteSurvey(survey.id)} />
                                         </td>
                                     </tr>
                                 ))}
