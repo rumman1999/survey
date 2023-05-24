@@ -178,13 +178,10 @@
     border: none;
     border: 1px solid #278DF1;
   }
-  
-
-  
- 
 
 .addbutton{
   margin: 0 300px;
+  border-radius: 20px;
 }
 
 

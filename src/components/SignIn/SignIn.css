@@ -2,19 +2,19 @@
   box-sizing: border-box;
 }
   .abc{
-
     background: linear-gradient(to bottom, white, #6ED4FF);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 70vh;
-    /* margin: auto; */
+    height: 120vh;
   }
   .main-continer{
-    margin: 200px;
-    margin-bottom: 0;
-    
+    /* margin: 200px; */
+    /* margin-bottom: 0; */
+    /* margin: 0px 200px 0px 200px; */
     display: flex;
+    padding: 200px;
     justify-content: space-between;
+  
 
   }
   .heading1  .text1{
@@ -42,7 +42,7 @@
     color: #FFFFFF;
     padding: 8px 16px 8px 16px;
     border: none;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     font-size: 18px;
     cursor: pointer;
   }
@@ -52,9 +52,11 @@
         width: 400px;
         text-align: center;
         background-color: #FFFFFF;
-        box-shadow: 12px #00000029;
+        
         border-radius: 12px;
   }
+  
+
   .signin .text{
     font-size: 20px;
     color: #808080;
@@ -78,6 +80,7 @@
     /* padding: 10px; */
     
   }
-  .btn button{
+  .btn {
     margin-bottom: 20px;
+  
   }
