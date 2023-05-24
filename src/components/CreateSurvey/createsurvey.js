@@ -24,37 +24,38 @@ const SurveyForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('description', description);
-      formData.append('surveyType', surveyType);
-      formData.append('startDate', startDate);
-      formData.append('endDate', endDate);
-      formData.append('criteria', criteria);
-      formData.append('image', image);
-      fetch(`${REACT_APP_API_ENDPOINT}/survey`, {
-        method: 'POST',
-        body: formData,
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('description', description);
+    formData.append('surveyType', surveyType);
+    formData.append('startDate', startDate);
+    formData.append('endDate', endDate);
+    formData.append('criteria', criteria);
+    formData.append('image', image);
+    // console.log(formData);
+    
+    fetch(`${REACT_APP_API_ENDPOINT}/survey`, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => {
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('Survey creation failed');
+        }
       })
-        .then(response => {
-          if (response.status === 200) {
-            return response.json();
-          } else {
-            throw new Error('Survey creation failed');
-          }
-        })
-        .then(data => {
-          console.log(data.result._id);
-          localStorage.setItem('id', data.result._id);
-          return data;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-      
-    navigate('/createQues');
+      .then(data => {
+        // console.log(data.result._id);
+        localStorage.setItem('id', data.result._id);
+        navigate('/createQues'); // Navigate here after data is saved
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
+  
   
   const handleCancle = (e) =>{
     navigate('/surveyitems')
@@ -71,6 +72,8 @@ const SurveyForm = () => {
         
         <Sidebar/>
     <div id="survey">
+      
+    <form onSubmit={handleSubmit}>
     <div className="heading-container">
       <h2>Create Survey</h2>
       <div className="button-container">
@@ -78,13 +81,12 @@ const SurveyForm = () => {
           Cancel
         </button>
         
-        <button type="submit" className="next-button" onClick={handleSubmit}>
+        <button type="submit" className="next-button">
           Next
         </button>
       </div>
     </div>
     <hr />
-      <form onSubmit={handleSubmit}>
         <div className="form-container">
           <div className="left-side">
           <div className="form-field">
@@ -173,9 +175,11 @@ const SurveyForm = () => {
             </div>
           </div>
         </div>
+        
       </form>
     </div>
     </div>
+      <div className='foot'>*After clicking on Next please wait to load</div>
   </>
     
   );

@@ -142,81 +142,88 @@ const CreateQuestion = () => {
 
         {/* Render existing questions */}
         <div className="pre">
-        {questions.map((question, index) => (
-          
-          <div key={question._id} className="question-container">
-            <div className="question-wrapper">
-              <span className="question-number">{`Q${index + 1}`}</span>
-              <span className="question-text">{`Question ${index + 1}:`}</span>
-              <div>
-                <input className='input-box'
-                  value={question.questionText}
-                  onChange={(e) =>
-                    handleQuestionTextChange(e, question.id)
-                  }
-                  placeholder="Enter your question here"
-                />
-              </div>
-            </div>
+  {questions.map((question, index) => (
+    <div key={question._id} className="question-container">
+      <div className="question-wrapper">
+        <span className="question-number">{`Q${index + 1}`}</span>
+        <span className="question-text">{`Question ${index + 1}:`}</span>
+        <div className="existing-ques">
+          <input
+            className="input-box"
+            value={question.questionText}
+            disabled
+          />
+        </div>
+      </div>
 
-            {question.option.map((option , optIndex) => (
-              <div key={optIndex}>
-                <label>
-                  <input
-                    type="radio"
-                    name={`question${question._id}`}
-                    value={option}
-                    checked={question.selectedOption === option}
-                  />
-                  {option}
-                </label>
-              </div>
-            ))}
-            
-          </div>
-        ))}
-      
+      {question.option.map((option, optIndex) => (
+        <div key={optIndex}>
+          <label>
+            <input
+              type="radio"
+              name={`question${question._id}`}
+              value={option}
+              checked={question.selectedOption === option}
+              readOnly // Make the input read-only
+            />
+            {option}
+          </label>
+        </div>
+      ))}
+    </div>
+  ))}
 
-        {/* Render new question input */}
-        <div className="question-container">
-          <div className="question-wrapper">
-            <span className="question-number">{`Q${questions.length + 1}`}</span>
-            <span className="question-text">{`Question ${questions.length + 1}:`}</span>
-            <div >
-              <textarea className='input-box'
-                value={questionText}
-                onChange={handleQuestionTextChange}
-                placeholder="Enter your question here"
-              ></textarea>
-            </div>
-          </div>
-          {/* Add option for new question */}
-          {option.map((option, index) => (
-        <div key={index} className="option">
+  {/* Render new question input */}
+  <div className="question-container">
+    <div className="question-wrapper">
+      <span className="question-number">{`Q${questions.length + 1}`}</span>
+      <span className="question-text">{`Question ${questions.length + 1}:`}</span>
+      <div>
+        <input
+          className="input-box"
+          value={questionText}
+          onChange={handleQuestionTextChange}
+          placeholder="Enter your question here"
+          required
+        />
+      </div>
+    </div>
+    {/* Add option for new question */}
+    {option.map((option, index) => (
+      <div key={index} className="option">
+        <label>
           <input
             type="radio"
             name={`option${index}`}
             value={option}
+            defaultChecked={false}
+            readOnly // Make the input read-only
           />
-          <span>Option{index+1}</span>
-          {index === 0 ? (
-            <button className='m-btn' onClick={handleAddOption}>+</button>
-          ) : (
-            <button className='m-btn' onClick={() => handleRemoveOption(index)}>-</button>
-          )}
-        </div>
-      ))}
-        </div>
-
-        {/* Add question button */}
-        <div className="centered-container">
-          <div>
-            <button className="addbutton" onClick={handleAddQuestion}>
-              Add Question
-            </button>
-          </div>
-        </div>
+          <span>Option{index + 1}</span>
+        </label>
+        {index === 0 ? (
+          <button className="m-btn" onClick={handleAddOption}>
+            +
+          </button>
+        ) : (
+          <button className="m-btn" onClick={() => handleRemoveOption(index)}>
+            -
+          </button>
+        )}
       </div>
+    ))}
+  </div>
+
+  {/* Add question button */}
+  <div className="centered-container">
+    <div>
+      <button className="addbutton" onClick={handleAddQuestion}>
+        Add Question
+      </button>
+    </div>
+  </div>
+</div>
+
       </div>
       </div>
       <div className='foot'>*After clicking on Add Button please wait to load</div>

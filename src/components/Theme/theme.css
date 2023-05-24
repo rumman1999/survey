@@ -131,3 +131,6 @@ justify-content: center;
     cursor: pointer;
     border: 1px solid whitesmoke;
 }
+input{
+  background: white;
+}

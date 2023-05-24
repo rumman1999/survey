@@ -6,10 +6,11 @@ import Sidebar from "../SurveyList/Sidebar";
 import Navigation from "../SurveyList/Navigation";
 const REACT_APP_API_ENDPOINT='https://survey-backend-g0aa.onrender.com'
 
+// const REACT_APP_API_ENDPOINT='http://localhost:5001'
+
 function Preview() {
   const navigate = useNavigate()
   const surveyId = localStorage.getItem('id')
-  const surveyName = localStorage.getItem('surveyName')
   const email = localStorage.getItem('email')
 
   const [themeData, setThemeData] = useState({});
@@ -20,20 +21,20 @@ function Preview() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, surveyName }),
+      body: JSON.stringify({ email, surveyId }),
     })
       .then(response => {
         if (response.status === 200) {
           return response.json();
-        } else if (response.status === 404) {
-          throw new Error('No user Found Please Register First');
+        } else if (response.status === 202) {
+          return response.json();
         } else {
-          throw new Error('Login failed');
+          throw new Error('Recieved Error');
         }
       })
       .then(data => {
-        // console.log(data)
         const token = data;
+        console.log(data);
         setThemeData(data);
       })
       .catch(error => {
@@ -41,10 +42,6 @@ function Preview() {
       });
   }, [REACT_APP_API_ENDPOINT]);
   
-  // useEffect(()=>{
-  //   const respond = fetchData(`${REACT_APP_API_ENDPOINT}/ques/${surveyId}`)
-  // },[surveyId])
-
   useEffect(() => {
     fetchData(`${REACT_APP_API_ENDPOINT}/ques/${surveyId}`)
       .then(data => {
@@ -55,7 +52,6 @@ function Preview() {
       });
   }, [REACT_APP_API_ENDPOINT, surveyId]);
   
-  // console.log(arr); // This will log the current state value
   
   
 
@@ -74,7 +70,6 @@ function Preview() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    localStorage.removeItem('surveyName');
     localStorage.removeItem('id');
     navigate('/surveyitems')
   };
@@ -82,19 +77,6 @@ function Preview() {
     e.preventDefault();
     navigate('/createQues')
   }
-//   let arr = [
-//     {question:'Do you feel comfortable asking for help when you’re stuck?',
-//     options:["true" , "false"]
-// },{question:'Do you trust your manager to listen',
-// options:["truef,dbfddkgjdfgkjdgkj" , "false" ,'untrue']
-// },{question:'Are you familiar with the company goals?',
-// options:["true" , "false" ]
-// },{question:'Are you familiar with the company goals?',
-// options:["true" , "false" ]
-// },{question:'Are you familiar with the company goals?',
-// options:["true" , "false" ]
-// }
-//   ];
   return (
     <>
     <Navigation/>
@@ -121,7 +103,7 @@ function Preview() {
       }
       </div>
     </div>
-    </div>
+    </div><div className='foot'>*After clicking on Next please wait to load</div>
     </>
   );
 }

@@ -24,7 +24,7 @@ function SignIn() {
         if (!password) {
             errors.password = 'Password is required';
         }
-        console.log(errors);
+        // console.log(errors);
         setErrors(errors);
 
         return Object.keys(errors).length === 0;

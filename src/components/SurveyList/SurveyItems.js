@@ -14,11 +14,13 @@ import "./SurveyItems.css";
 import Sidebar from "./Sidebar";
 import Navigation from './Navigation'
 
-const REACT_APP_API_ENDPOINT='http://localhost:5001'
+const REACT_APP_API_ENDPOINT='https://survey-backend-g0aa.onrender.com'
+// const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
 
 const SurveyItems = () => {
     const email = localStorage.getItem('email')
+    // console.log(email);
     const navigate = useNavigate();
     const [surveys, setSurveys] = useState([])
     useEffect(()=>{
@@ -35,12 +37,8 @@ const SurveyItems = () => {
         startDate: "",
         endDate: "",
     });
-    function fetchData(url, email) {
-        const apiUrl = new URL(url);
-        apiUrl.searchParams.append('email', email);
-      
-        // console.log(apiUrl);
-        return fetch(apiUrl)
+    function fetchData(url) {
+        return fetch(url)
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not OK');
@@ -64,9 +62,32 @@ const SurveyItems = () => {
         setIsEditing(true);
     };
 
-    const handleDeleteSurvey = (surveyId) => {
-        fetchData(`${REACT_APP_API_ENDPOINT}/survey/${surveyId}`)
-    };
+    const handleDeleteSurvey = (id) => {
+        const email = localStorage.getItem('email');
+        
+        fetch(`${REACT_APP_API_ENDPOINT}/survey/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not OK');
+            }
+            return response.json();
+          })
+          .then(data => {
+            setSurveys(data.result);
+            return data;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      };
+      
+      
 
     const handleSaveSurvey = () => {
         if (isEditing) {
@@ -133,7 +154,7 @@ const SurveyItems = () => {
                             </thead>
                             <tbody>
                                 {surveys.map((survey) => (
-                                    <tr key={survey.id}>
+                                    <tr key={survey._id}>
                                         <td className="table-data">{survey.name}</td>
                                         <td className="table-data">{survey.surveyType}</td>
                                         <td className="table-data">{survey.description}</td>
@@ -143,7 +164,7 @@ const SurveyItems = () => {
                                             {/* <button >
                                                 Edit
                                             </button> */}
-                                            <FontAwesomeIcon className="edit" icon={faEdit} onClick={() => handleEditSurvey(survey.id)} />
+                                            <FontAwesomeIcon className="edit" icon={faEdit} onClick={() => handleEditSurvey(survey._id)} />
                                             {/* <button >
                                                 Delete
                                             </button> */}
@@ -212,7 +233,7 @@ const SurveyItems = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div><div className='foot'>*Please wait to load the previos data if any</div>
         </>
     );
 };
