@@ -3,8 +3,6 @@ import './theme.css'
 import ThemeForm from "./ThemeForm";
  
 function Theme(){
-    //part to be done in create survey component 
- //
     const [popup,setPop]=useState(false)
     const handleClickOpen=()=>{
         setPop(!popup)

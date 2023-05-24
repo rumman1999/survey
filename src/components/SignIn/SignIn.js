@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate ,} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './SignIn.css'
-const REACT_APP_API_ENDPOINT='http://localhost:5001'
+const REACT_APP_API_ENDPOINT='https://survey-backend-g0aa.onrender.com'
 
 
 function SignIn() {
@@ -24,7 +24,7 @@ function SignIn() {
         if (!password) {
             errors.password = 'Password is required';
         }
-        console.log(errors);
+        // console.log(errors);
         setErrors(errors);
 
         return Object.keys(errors).length === 0;
@@ -78,7 +78,7 @@ function SignIn() {
         <div className="abc">
             <div className='main-continer'>
             <div className='heading1'>
-                <p className='text1'>Welcome Page<br /> One line text <br /> Will be here </p>
+                <p className='text1'>Survey Website<br /> Right place to <br /> Create Survey </p>
                 <p className='text2'>Sign in to continue access pages</p>
                 <p className='text3'>Don’t Have An Account?</p>
                 

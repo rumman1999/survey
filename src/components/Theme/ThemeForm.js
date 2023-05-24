@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const REACT_APP_API_ENDPOINT='http://localhost:5001'
+const REACT_APP_API_ENDPOINT='https://survey-backend-g0aa.onrender.com'
+
+// const REACT_APP_API_ENDPOINT='http://localhost:5001'
 
 function MyForm({ closePopup }) {
   
   const email = localStorage.getItem('email')
-  const surveyName= localStorage.getItem('surveyName')
+  const surveyId = localStorage.getItem('id')
   
-  // console.log(email , surveyName);
+  // console.log(email , surveyId);
 
   const [themeData, setThemeData] = useState({
     themeOpt: '',
@@ -33,7 +35,7 @@ function MyForm({ closePopup }) {
     event.preventDefault();
     const newTheme = {
       email,
-      surveyName,
+      surveyId,
        themeOpt:themeData.themeOpt,
        themeName:themeData.themeName,
        themeType:themeData.themeType,

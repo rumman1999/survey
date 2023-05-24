@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import "./Register.css";
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-const REACT_APP_API_ENDPOINT='http://localhost:5001'
+const REACT_APP_API_ENDPOINT='https://survey-backend-g0aa.onrender.com'
 
 
 function Register() {
@@ -93,10 +93,7 @@ function Register() {
         <div className="abc">
             <div className="main-continer">
             <div className="heading1">
-                <p className="text1">
-                    Welcome Page
-                    <br /> One line text <br /> Will be here{" "}
-                </p>
+            <p className='text1'>Survey Website<br /> Right place to <br /> Create Survey </p>
                 <p className="text2">Sign in to continue access pages</p>
                 <p className="text3">Don’t Have An Account?</p>
                 

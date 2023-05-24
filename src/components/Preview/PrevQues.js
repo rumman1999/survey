@@ -22,14 +22,14 @@ export default function PrevQues({ ques, index, themeData }) {
       <p>{ques.question}</p>
       {themeData.optionType && themeData.optionType.toUpperCase() === 'DROPDOWN' ? (
         <select className="my-select">
-          {ques.options.map((option, index) => (
+          {ques.option.map((option, index) => (
             <option key={index} value={option}>
               {option}
             </option>
           ))}
         </select>
       ) : (
-        ques.options.map((opt, optionIndex) => (
+        ques.option.map((opt, optionIndex) => (
           <React.Fragment key={optionIndex}>
             <div
               onClick={() => handleOptionClick(optionIndex)}
