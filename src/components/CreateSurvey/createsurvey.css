@@ -1,11 +1,16 @@
+/* Survey Container */
 #survey {
+  width: 80%;
   background-color: #f5f8fa;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 90px 100px 0 370px;
+  padding: 30px;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  margin: 90px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo and Heading */
 .logo-container {
   display: flex;
   align-items: center;
@@ -13,9 +18,10 @@
 }
 
 .logo-text {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
-  margin-right: 10px;
+  color: #0073e6;
+  margin-right: 15px;
 }
 
 .logo-image {
@@ -24,73 +30,122 @@
   border-radius: 50%;
 }
 
+/* Heading Style */
 h2 {
   text-align: left;
+  font-size: 28px;
+  color: #333;
   margin-top: 20px;
 }
 
+/* Horizontal Line */
 hr {
   margin-top: 20px;
+  border: 0;
+  height: 1px;
+  background: #e1e8ed;
 }
 
+/* Form Container */
 .form-container {
   display: flex;
+  gap: 20px;
 }
 
-.left-side {
+/* Left and Right Side */
+.left-side, .right-side {
   flex: 1;
-  padding-right: 20px;
 }
 
-.right-side {
-  flex: 1;
-  padding-left: 20px;
-}
-
+/* Form Field */
 .form-field {
   margin-bottom: 20px;
 }
-
-.form-field label {
-  display: block;
-  margin-bottom: 5px;
+.heading-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
+./* Button Container */
 .button-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
+
+.form-field label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccd6dd;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: #0073e6;
+  outline: none;
+}
+
+
 
 .cancel-button,
 .next-button {
-  padding: 6px 20px;
+  padding: 10px 20px;
   font-size: 16px;
+  font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.frame {
-  display: flex;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .cancel-button {
-  background-color: white;
-  color: blue;
+  background-color: #fff;
+  color: #0073e6;
+  border: 2px solid #0073e6;
   margin-right: 10px;
-  border: none;
-  border: 2px solid white;
 }
 
 .next-button {
-  background-color: blue;
-  color: white;
-  border: none;
-  border: 2px solid white;
+  background-color: #0073e6;
+  color: #fff;
+  border: 2px solid #0073e6;
 }
 
-.cancel-button:hover,
+.cancel-button:hover {
+  background-color: #0073e6;
+  color: #fff;
+}
+
 .next-button:hover {
-  border-color: blue;
+  background-color: #005bb5;
+  border-color: #005bb5;
+}
+
+/* Frame Container */
+/* .frame {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+} */
+
+.foot {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  margin-top: 20px;
 }

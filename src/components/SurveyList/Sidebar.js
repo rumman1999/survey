@@ -12,7 +12,7 @@ import SurveyItems from './SurveyItems';
 
 function Sidebar() {
     const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const navigateToSignUpPage = (e) => {
     e.preventDefault();
     navigate('/')
   }
@@ -21,7 +21,7 @@ function Sidebar() {
         <>
         <div className="sidebar">
             <ul>
-                <li className='home' onClick={handleSubmit}>
+                <li className='home' onClick={navigateToSignUpPage}>
                     <FontAwesomeIcon icon={faHouse} />
                 </li>
                 <li >
@@ -29,7 +29,7 @@ function Sidebar() {
                     
                 </li>
                 <li>
-                    <FontAwesomeIcon icon={faHamburger} />
+                    <FontAwesomeIcon icon={faHamburger} onClick={()=>navigate('/surveyitems')}/>
                 </li>
             </ul>
         </div>

@@ -45,7 +45,6 @@ function Register() {
         if (password !== confirmPassword) {
             errors.confirmPassword = 'Passwords do not match';
         }
-        console.log(errors);
         setErrors(errors);
 
         return Object.keys(errors).length === 0;
@@ -53,7 +52,7 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(validateForm());
+        console.log("validateForm",validateForm());
         if (validateForm()) {
             const registrationData = {
                 name,

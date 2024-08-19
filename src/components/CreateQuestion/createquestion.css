@@ -1,113 +1,130 @@
-
- *{
+* {
   box-sizing: border-box;
-}.next-page-container {
-    display: flex;
-    flex-direction: column;margin-top: 80px;
-    margin-left:200px;height: 81.9vh
-  }
-  hr{
-    margin-left: 100px;
-  }
-  
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 100px;
-    width: 100%;
-
-  }
-  .question-number {
-    margin-right: 8px; /* Adjust the margin value as per your preference */
-  }
-  
-  .question-text {
-    margin-top: 20px; /* Adjust the margin value as per your preference */
-  }  
-  .foot {
-    margin-left: 50px;
-    position: fixed;
-    bottom: 0;
 }
-h2{
+.frame1{
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+.next-page-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  height: 81.9vh;
+  width: 90%;
+}
+hr {
+  margin-left: 100px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 100px;
+  width: 95%;
+}
+.question-number {
+  margin-right: 8px; /* Adjust the margin value as per your preference */
+}
+
+.question-text {
+  margin-top: 20px; /* Adjust the margin value as per your preference */
+  font-weight: bold;
+}
+.foot {
+  margin-left: 50px;
+  position: fixed;
+  bottom: 0;
+}
+h2 {
   display: inline;
-    margin-left: 10px
+  margin-left: 10px;
 }
- 
+.optionsCont{
+  margin-left: 20px;
+  display: flex;
+  gap: 20px;
+}
+.option-number{
+  font-weight: 500;
+}
 
-  .question-container {
-    border: 1px solid #ccc;
-    background-color: lightblue;
-    padding: 10px; border-radius: 5px;
-    margin-bottom: 1px;
-    font-size: smaller;
-  }
-  label{
-    margin: 0;
-  }
+.question-container {
+  border: 1px solid #ccc;
+  background-color: lightblue;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 1px;
+  font-size: smaller;
+}
+label {
+  margin: 0;
+}
 
-  .question-wrapper {
-    margin-bottom: 10px;
-  }
+.question-wrapper {
+  margin-bottom: 10px;
+  display: flex;
+}
 
-  .question-number {
-    font-weight: bold;
-  }
+.question-number {
+  font-weight: bold;
+}
 
-  .question-text {
-    margin-top: 0;
-  }
+.question-text {
+  margin-top: 0;
+}
 
-  textarea {
-    width: 50%;
-    padding: 5px;
-    height: 40px;
-    border-radius: 5px;
-  }
+textarea {
+  width: 50%;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px;
+}
 
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .centered-container {
-    justify-content: center;
-    align-items: center;
-    height:20px;
-  }
-  h2{
-    text-align: left;
-  }
-  .button-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .preview-button,
-  .save-button {
-    padding: 10px 20px;
-    font-size: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 1px solid whitesmoke;
-    margin-right: 5px;
-  }
-  
-  .save-button {
-    background-color: white;
-    color: #278DF1;
-    border: none;
-    border: 1px solid #278DF1;
-  }
-  
-.m-btn{
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+.centered-container {
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+h2 {
+  text-align: left;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.preview-button,
+.save-button {
+  padding: 10px 20px;
+  font-size: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid whitesmoke;
+  margin-right: 5px;
+}
+
+.save-button {
+  background-color: white;
+  color: #278df1;
+  border: none;
+  border: 1px solid #278df1;
+}
+
+.m-btn {
   width: 20px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    padding: 0;
-    margin-left: 10px
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 0;
+  margin-left: 10px;
 }
 /* CSS for the input box */
 .input-box {
@@ -117,10 +134,15 @@ h2{
   font-size: 16px;
   outline: none;
   transition: border-color 0.3s ease;
-  width: 300px;
-  height: 25px;
-  margin-left: 30px;
+  width: 100%;
+  height: 125px;
+  word-wrap: break-word; /* Ensure words wrap to the next line */
+  word-break: break-word; /* Prevent words from overflowing */
+  white-space: normal; /* Allow text to wrap normally */
+  overflow-wrap: break-word; /* Break long words to fit within the container */
+  margin-top: 10px;
 }
+
 
 .input-box:focus {
   border-color: #007bff;
@@ -131,31 +153,35 @@ h2{
   color: #999;
 }
 
-
-  
- 
-
-.addbutton{
+.addbutton {
   padding: 10px 20px;
   font-size: 10px;
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid whitesmoke;
-  margin: 0 300px;
   width: 140px;
 }
 
-
-.pre{
-  padding: 10px 10px;
+.prev {
+  padding: 10px 0;
   overflow-y: auto;
   height: 82vh;
+  display: flex;
+  gap: 40px;
 }
-.existing-ques input{
+.pre-ques{
+  width: 65%;
+}
+.create-ques{
+  width: 30%;
+}
+.existing-ques {
   background-color: aliceblue;
-  padding-left: 10px;
+  margin-left: 10px;
+  font-style: italic;
+
 }
-input{
+input {
   background-color: aliceblue;
   padding-left: 10px;
 }

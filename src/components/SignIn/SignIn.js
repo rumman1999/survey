@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate ,} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './SignIn.css'
+import { GlobalContext } from '../../context/GlobalContext';
 const REACT_APP_API_ENDPOINT='https://survey-backend-g0aa.onrender.com'
 
 
 function SignIn() {
+  const { user , setUser} = useContext(GlobalContext)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
@@ -62,6 +64,10 @@ function SignIn() {
               // console.log(token);
               localStorage.setItem('token' , token)
               localStorage.setItem('email' , email)
+              setUser({
+                email:email,
+                token : token
+              })
               setFail('');
               navigate('/surveyItems');
             })
