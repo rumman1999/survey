@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './components/SignIn/Register';
 import SignIn from './components/SignIn/SignIn'
 import SurveyItems from './components/SurveyList/SurveyItems'
-import SurveyForm from './components/CreateSurvey/Createsurvey'
+import SurveyForm from "./components/CreateSurvey/SurvyeForm"
 import CreateQuestion from './components/CreateQuestion/createquestion';
 import Preview from "./components/Preview/Preview"
 
