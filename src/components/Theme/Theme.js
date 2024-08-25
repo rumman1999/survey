@@ -12,23 +12,12 @@ function Theme(){
     }
   
     return(
-        <>
-            <button className="theme-btn" onClick={handleClickOpen}>Theme Setting</button>
-            <div>
+        <div className="popup">
                 {
                     popup?
-                    <div className="main">
-                        <div className="popup">
-                            <div className="popup-header">
-                                <h3>Theme Setting</h3>
-                                <h3 className="cursor-pointer" onClick={closePopup}>x</h3>
-                            </div>
-                            <ThemeForm closePopup={closePopup}/>
-                        </div>
-                    </div>:""
+                            <ThemeForm closePopup={closePopup}/>:""
                 }
-            </div>
-        </>
+        </div>
     )
 }
 export default Theme;

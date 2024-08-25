@@ -33,7 +33,7 @@ export const GlobalProvider = ({ children }) => {
         return response.json();
       })
       .then((data) => {
-        // console.log("DATA.REST", data.result);
+        console.log("DATA.REST", data.result);
         setSurveyList(data.result);
         return data;
       })
@@ -128,9 +128,8 @@ export const GlobalProvider = ({ children }) => {
       }
     };
 
-  
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+    const getSurveyListData = () =>{
+      const token = localStorage.getItem("token");
     const email = localStorage.getItem("email");
     if (token && email) {
       setUser({
@@ -145,6 +144,11 @@ export const GlobalProvider = ({ children }) => {
           console.error("Failed to fetch survey list", error);
         });
     }
+    }
+
+  
+  useEffect(() => {
+    getSurveyListData()
   }, []);
 
   useEffect(() => {
@@ -159,12 +163,6 @@ export const GlobalProvider = ({ children }) => {
     }
   }, [user]);
 
-  // useEffect(() => {
-  //  if(selectedSurveyID){
-  //   fetchSurveyDetails()
-  //   // fetchQuestionsList()
-  //  }
-  // }, [selectedSurveyID]);
 
   return (
     <GlobalContext.Provider
@@ -181,7 +179,7 @@ export const GlobalProvider = ({ children }) => {
         selectedSurveyID , setSelectedSurveyID,
         editingSurvey , setEditingSurvey,
         questionsList , setQuestionList,
-        fetchQuestionsList,fetchSurveyDetails, addQuestionService
+        fetchQuestionsList,fetchSurveyDetails, addQuestionService , getSurveyListData
       }}
     >
       {children}

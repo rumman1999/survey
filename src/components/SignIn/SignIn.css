@@ -1,90 +1,24 @@
-*{
-  box-sizing: border-box;
+body {
+  font-family: 'Poppins', sans-serif;
 }
-  .abc{
 
-    background: linear-gradient(to bottom, white, #6ED4FF);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 69.634vh;
-    border: none;
-    /* margin: auto; */
-  }
-  .main-continer{
-    margin: 200px;
-    margin-bottom: 0;
-    
-    display: flex;
-    justify-content: space-between;
-    padding-bottom:20px
+.container {
+  background: linear-gradient(135deg, #f3f4f6, #ffffff);
+}
 
-  }
-  .heading1  .text1{
-    font-size: 40px;
-    font-weight: bolder;
-    color: #5C5C5C;
-    text-align: left;
-    padding: 0%;
-    margin: 0%;
-    
-  }
-  .heading1 .text2{
-    font-size: 20px;
-    color: #5C5C5C;
-    text-align: left;
-  }
-  .heading1 .text3{
-    margin-top: 50px;
-    font-size: 16px;
-    text-align: left ;
-    color: #5C5C5C;
-  }
-  button {
-    background-color: #278DF1;
-    color: #FFFFFF;
-    padding: 8px 16px 8px 16px;
-    border: none;
-    border-radius: 20px;
-    font-size: 18px;
-    cursor: pointer;
-  }
+h1, h2 {
+  font-family: 'Montserrat', sans-serif;
+}
 
+h1 {
+  color: #333;
+}
 
-  .main-continer .signin{
-        width: 400px;
-        text-align: center;
-        background-color: #FFFFFF;
-        box-shadow: 12px 12px #c4c4c429;
-        border-radius: 12px;
-        padding-bottom: 10px;
-  }
-  .signin .text{
-    font-size: 20px;
-    color: #808080;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 10px;
-    padding: 20px;
+h2 {
+  color: #555;
+}
 
-  }
-  label {
-    color:#808080;
-  }
-  
-  input{
-    width: 310px;
-    border: none;
-    border-bottom: 1px solid #808080;
-    /* padding: 10px; */
-    
-  }
-  .btn button{
-    border-radius: 10px;
-  }
-  .register{
-
-    border-radius: 10px;
-  }
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
